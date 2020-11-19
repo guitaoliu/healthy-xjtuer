@@ -11,16 +11,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 load_dotenv()
 
-logging.basicConfig(level=logging.INFO)
+logging.basicoptions(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def main():
     netid = os.getenv("netid")
     password = os.getenv("password")
-    config = webdriver.ChromeOptions()
-    config.headless = True
-    driver = webdriver.Chrome(config)
+    options = webdriver.ChromeOptions()
+    options.headless = True
+    driver = webdriver.Chrome(options=options)
     driver.get("http://jkrb.xjtu.edu.cn/EIP/user/index.htm")
     wait = WebDriverWait(driver=driver, timeout=10)
     wait.until((EC.url_contains("org.xjtu.edu.cn")))
