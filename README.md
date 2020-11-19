@@ -11,7 +11,7 @@ Use github action to help you complete the dummy daily health report.
 
 ## Todo
 
-- [] add graduate student check-in support
+- [ ] add graduate student check-in support
 
 ## License
 

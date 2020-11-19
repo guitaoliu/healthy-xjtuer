@@ -55,7 +55,7 @@ def main():
     elem.click()
     driver.implicitly_wait(1)
     driver.switch_to.default_content()
-    driver.implicitly_wait(1)
+    driver.implicitly_wait(5)
     try:
         iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload4()']")
         driver.switch_to.frame(iframe)
