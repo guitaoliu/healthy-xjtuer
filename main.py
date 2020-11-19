@@ -21,7 +21,7 @@ def main():
     options = webdriver.ChromeOptions()
     options.headless = True
     options.add_argument("--window-size=1920,1080")
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
     driver.get("http://jkrb.xjtu.edu.cn/EIP/user/index.htm")
     wait = WebDriverWait(driver=driver, timeout=10)
     wait.until((EC.url_contains("org.xjtu.edu.cn")))
