@@ -4,6 +4,7 @@ from random import random
 
 from dotenv import load_dotenv
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -55,25 +56,36 @@ def main():
     driver.implicitly_wait(1)
     driver.switch_to.default_content()
     driver.implicitly_wait(1)
-    iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload4()']")
-    driver.switch_to.frame(iframe)
-    iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload1()']")
-    driver.switch_to.frame(iframe)
+    try:
+        iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload4()']")
+        driver.switch_to.frame(iframe)
+        iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload1()']")
+        driver.switch_to.frame(iframe)
+        driver.find_element_by_xpath("//input[@value='绿色']").click()
+        logger.info("Check green status")
+        driver.find_element_by_xpath("//input[@id='mini-4$ck$0']").click()
+        logger.info("Check has Xi'an QR")
+        temp = str(round(36 + random(), 1))
+        driver.find_element_by_xpath(
+            "//input[@placeholder='请准确填写体温，格式如:36.5']"
+        ).send_keys(temp)
+        logger.info(f"Today's body temp. is {temp}")
 
-    driver.find_element_by_xpath("//input[@value='绿色']").click()
-    driver.find_element_by_xpath("//input[@id='mini-4$ck$0']").click()
-    driver.find_element_by_xpath("//input[@placeholder='请准确填写体温，格式如:36.5']").send_keys(
-        str(round(36 + random(), 1))
-    )
-
-    driver.switch_to.default_content()
-    driver.implicitly_wait(1)
-    iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload4()']")
-    driver.switch_to.frame(iframe)
-    submit_btn = driver.find_element_by_xpath("//a[@id='sendBtn']")
-    submit_btn.click()
-    driver.find_element_by_xpath("//*[@id='mini-17']").click()
-    logger.info("Successful submit!")
+        driver.switch_to.default_content()
+        driver.implicitly_wait(1)
+        iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload4()']")
+        driver.switch_to.frame(iframe)
+        submit_btn = driver.find_element_by_xpath("//a[@id='sendBtn']")
+        submit_btn.click()
+        driver.find_element_by_xpath("//*[@id='mini-17']").click()
+        logger.info("Successful submit!")
+    except NoSuchElementException:
+        driver.switch_to.default_content()
+        iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload5()']")
+        driver.switch_to.frame(iframe)
+        elem = driver.find_element_by_xpath("//*[@id='messageId']")
+        logger.info("You've already signed in.")
+        logger.info(elem.text)
 
 
 if __name__ == "__main__":
