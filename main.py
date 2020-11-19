@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 load_dotenv()
 
-logging.basicoptions(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
