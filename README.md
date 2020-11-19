@@ -9,6 +9,10 @@ Use github action to help you complete the dummy daily health report.
 3. The check-in tasks will be performed automatically at 12:00 daily.
 4. The job will also be triggered on push action.
 
+## Todo
+
+- [] add graduate student check-in support
+
 ## License
 
 MIT License

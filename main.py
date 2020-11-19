@@ -84,7 +84,7 @@ def main():
         iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload5()']")
         driver.switch_to.frame(iframe)
         elem = driver.find_element_by_xpath("//*[@id='messageId']")
-        logger.info("You've already signed in.")
+        logger.info("You've already checked in.")
         logger.info(elem.text)
 
 
