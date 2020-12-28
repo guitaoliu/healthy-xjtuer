@@ -37,3 +37,9 @@ jobs:
           netid: ${{ secrets.netid }}
           password: ${{ secrets.password }}
         run: pipenv run python main.py
+      - name: Fail handler
+        if: ${{ failure() }}
+        env:
+          netid: ${{ secrets.netid }}
+          password: ${{ secrets.password }}
+        run: pipenv run python main.py

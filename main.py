@@ -24,7 +24,7 @@ def main():
     options.add_argument("--window-size=1920,1080")
     driver = webdriver.Chrome(options=options)
     driver.get("http://jkrb.xjtu.edu.cn/EIP/user/index.htm")
-    wait = WebDriverWait(driver=driver, timeout=10)
+    wait = WebDriverWait(driver=driver, timeout=30)
     wait.until((EC.url_contains("org.xjtu.edu.cn")))
     elem = wait.until(
         EC.presence_of_element_located((By.XPATH, '//*[@id="form1"]/input[1]'))
