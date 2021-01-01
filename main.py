@@ -62,12 +62,6 @@ def main():
         iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload1()']")
         driver.switch_to.frame(iframe)
 
-        driver.find_element_by_xpath("//input[@value='绿色']").click()
-        logger.info("Check green status")
-
-        driver.find_element_by_xpath("//input[@id='mini-4$ck$0']").click()
-        logger.info("Check has Xi'an QR")
-
         temp = str(round(36 + random(), 1))
         driver.find_element_by_xpath(
             "//input[@placeholder='请准确填写体温，格式如:36.5']"
