@@ -20,7 +20,7 @@ def main():
     netid = os.getenv("netid")
     password = os.getenv("password")
     options = webdriver.ChromeOptions()
-    options.headless = True
+    # options.headless = True
     options.add_argument("--window-size=1920,1080")
     driver = webdriver.Chrome(options=options)
     driver.get("http://jkrb.xjtu.edu.cn/EIP/user/index.htm")
@@ -61,6 +61,9 @@ def main():
         driver.switch_to.frame(iframe)
         iframe = driver.find_element_by_xpath("//iframe[@onload='__iframe_onload1()']")
         driver.switch_to.frame(iframe)
+
+        # check travel history
+        driver.find_element_by_xpath("//*[@id='mini-3$ck$1']").click()
 
         temp = str(round(36 + random(), 1))
         driver.find_element_by_xpath(
